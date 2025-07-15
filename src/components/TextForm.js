@@ -58,20 +58,20 @@ export default function TextForm(props) {
         </div>
         <div className="container">
           <div className="row">
-             <div class="col-6 col-md-2 mb-2">
+             <div className="col-6 col-md-2 mb-2">
 
 
         <button className="btn btn-primary mx-1" onClick={handleUpClick}>
           Convert to uppercase
         </button>
         </div>
-        <div class="col-6 col-md-2 mb-2">
+        <div className="col-6 col-md-2 mb-2">
 
         <button className="btn btn-primary mx-1" onClick={handleLoClick}>
           Convert to lowercase
         </button>
         </div>
-           <div class="col-6 col-md-2 mb-2">
+           <div className="col-6 col-md-2 mb-2">
 
         <button
           className="btn btn-primary mx-1"
@@ -80,7 +80,7 @@ export default function TextForm(props) {
           Capitalize Words
         </button>
         </div>
-    <div class="col-6 col-md-2 mb-2">
+    <div className="col-6 col-md-2 mb-2">
 
         <button
           className="btn btn-primary mx-1"
@@ -90,7 +90,7 @@ export default function TextForm(props) {
           Copy text
         </button>
         </div>
-        <div class="col-6 col-md-2 mb-2">
+        <div className="col-6 col-md-2 mb-2">
 
         <button
           className="btn btn-primary mx-1"
@@ -100,7 +100,7 @@ export default function TextForm(props) {
           Remove extra space
         </button>
         </div>
-        <div class="col-6 col-md-2 mb-2">
+        <div className="col-6 col-md-2 mb-2">
 
         <button className="btn btn-primary mx-1" onClick={handleClearClick}>
           Clear text
@@ -112,11 +112,11 @@ export default function TextForm(props) {
       <div className="container my-3" style={{color: props.mode === 'light'?'black':'white'}} >
         <h2>Your text summary</h2>
         <p>
-          <strong> {text.split(" ").length}</strong> Words and{" "}
+          <strong> {text?text.trim().split(/\s+/).length:0}</strong> Words and{" "}
           <strong> {text.length}</strong> Characters
         </p>
         <p>
-          <strong>{0.008 * text.split(" ").length} </strong>Minutes to read
+          <strong>{(0.008 * (text?text.trim().split(/\s+/).length:0)).toFixed(2)} </strong>Minutes to read
         </p>
         <h3>Preview</h3>
         <p>{text.length>0?text : "Enter somthing in the textbox above to preview it"}</p>
