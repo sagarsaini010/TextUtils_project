@@ -6,14 +6,17 @@ export default function TextForm(props) {
     // console.log("Uppercase was clicked" + text)
     let newText = text.toUpperCase();
     setText(newText);
+    props.alert("Text converted to uppercase","success")
   };
   const handleLoClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    props.alert("Text converted to lowercase","success")
   };
   const handleClearClick = () => {
     let newText = "";
     setText(newText);
+     props.alert("Text has been cleared","success")
   };
   const handleOnChange = (event) => {
     setText(event.target.value);
@@ -23,15 +26,18 @@ export default function TextForm(props) {
       .toLowerCase()
       .replace(/\b\w/g, (char) => char.toUpperCase());
     setText(capitalized);
+     props.alert("Text fisrt letters converted to uppercase","success")
   };
   const handleCopy = () =>{
     var text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value)
+     props.alert("Text has been copied on clipbord","success")
   }
   const handleExtraSpace = () =>{
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "))
+     props.alert("Extra space has been deleted","success")
     
   }
 
@@ -50,18 +56,32 @@ export default function TextForm(props) {
             rows="10"
           ></textarea>
         </div>
+        <div className="container">
+          <div className="row">
+             <div class="col-6 col-md-2 mb-2">
+
+
         <button className="btn btn-primary mx-1" onClick={handleUpClick}>
           Convert to uppercase
         </button>
+        </div>
+        <div class="col-6 col-md-2 mb-2">
+
         <button className="btn btn-primary mx-1" onClick={handleLoClick}>
           Convert to lowercase
         </button>
+        </div>
+           <div class="col-6 col-md-2 mb-2">
+
         <button
           className="btn btn-primary mx-1"
           onClick={handleCapitalizeWords}
         >
           Capitalize Words
         </button>
+        </div>
+    <div class="col-6 col-md-2 mb-2">
+
         <button
           className="btn btn-primary mx-1"
           onClick={handleCopy}
@@ -69,6 +89,9 @@ export default function TextForm(props) {
         
           Copy text
         </button>
+        </div>
+        <div class="col-6 col-md-2 mb-2">
+
         <button
           className="btn btn-primary mx-1"
           onClick={handleExtraSpace}
@@ -76,10 +99,15 @@ export default function TextForm(props) {
       
           Remove extra space
         </button>
+        </div>
+        <div class="col-6 col-md-2 mb-2">
 
         <button className="btn btn-primary mx-1" onClick={handleClearClick}>
           Clear text
         </button>
+         </div>
+       </div>
+       </div>
       </div>
       <div className="container my-3" style={{color: props.mode === 'light'?'black':'white'}} >
         <h2>Your text summary</h2>
