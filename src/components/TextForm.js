@@ -32,6 +32,7 @@ export default function TextForm(props) {
     var text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value)
+    document.getSelection().removeAllRanges();
      props.alert("Text has been copied on clipbord","success")
   }
   const handleExtraSpace = () =>{
@@ -61,19 +62,19 @@ export default function TextForm(props) {
              <div className="col-6 col-md-2 mb-2">
 
 
-        <button className="btn btn-primary mx-1" onClick={handleUpClick}>
+        <button disabled ={text.length===0} className="btn btn-primary mx-1" onClick={handleUpClick}>
           Convert to uppercase
         </button>
         </div>
         <div className="col-6 col-md-2 mb-2">
 
-        <button className="btn btn-primary mx-1" onClick={handleLoClick}>
+        <button disabled ={text.length===0} className="btn btn-primary mx-1" onClick={handleLoClick}>
           Convert to lowercase
         </button>
         </div>
            <div className="col-6 col-md-2 mb-2">
 
-        <button
+        <button disabled ={text.length===0}
           className="btn btn-primary mx-1"
           onClick={handleCapitalizeWords}
         >
@@ -82,7 +83,7 @@ export default function TextForm(props) {
         </div>
     <div className="col-6 col-md-2 mb-2">
 
-        <button
+        <button disabled ={text.length===0}
           className="btn btn-primary mx-1"
           onClick={handleCopy}
         >
@@ -92,7 +93,7 @@ export default function TextForm(props) {
         </div>
         <div className="col-6 col-md-2 mb-2">
 
-        <button
+        <button disabled ={text.length===0}
           className="btn btn-primary mx-1"
           onClick={handleExtraSpace}
         >
@@ -102,7 +103,7 @@ export default function TextForm(props) {
         </div>
         <div className="col-6 col-md-2 mb-2">
 
-        <button className="btn btn-primary mx-1" onClick={handleClearClick}>
+        <button disabled ={text.length===0} className="btn btn-primary mx-1" onClick={handleClearClick}>
           Clear text
         </button>
          </div>
@@ -119,7 +120,7 @@ export default function TextForm(props) {
           <strong>{(0.008 * (text?text.trim().split(/\s+/).length:0)).toFixed(2)} </strong>Minutes to read
         </p>
         <h3>Preview</h3>
-        <p>{text.length>0?text : "Enter somthing in the textbox above to preview it"}</p>
+        <p>{text.length>0?text : "Nothing to preview!"}</p>
       </div>
       
     </>
