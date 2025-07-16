@@ -27,7 +27,7 @@ export default function Navbar(props) {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/About Us">
+              <Link className="nav-link" to="/about">
                 {props.about}
               </Link>
             </li>
@@ -51,6 +51,6 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
-  title: 'Set title hear',
-  about: 'text about hear'
+  title: 'Set title here',
+  about: 'text about here'
 };
